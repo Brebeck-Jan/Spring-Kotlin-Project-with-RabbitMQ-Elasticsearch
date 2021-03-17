@@ -1,0 +1,23 @@
+version: '3.7'
+
+volumes:
+  rabbit-data:
+  es_data:
+
+services:
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.1
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - es_data:/usr/share/elasticsearch/data2
+    environment:
+      - discovery.type=single-node
+  elasticsearch-import:
+    build: .
+    depends_on:
+      - "elasticsearch"
+    links:
+      - "elasticsearch"

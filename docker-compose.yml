@@ -1,0 +1,63 @@
+version: "3"
+volumes:
+  es_data:
+
+networks:
+  elastic:
+    driver: bridge
+
+services:
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.11.1
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - es_data:/usr/share/elasticsearch/data3
+    environment:
+      - discovery.type=single-node
+    networks:
+      - elastic
+  kib01:
+    image: docker.elastic.co/kibana/kibana:7.11.1 
+    container_name: kib01
+    ports:
+      - 5601:5601
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
+    networks:
+      - elastic
+  rabbitmq:
+    image: rabbitmq:3.7-management-alpine
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ./rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
+      - ./definitions.json:/etc/rabbitmq/definitions.json:ro
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+  producer:
+    build:
+      context: producer/
+    ports:
+      - 8080:8080
+    depends_on:
+      - rabbitmq
+
+  geo-service:
+    build:
+      context: geo-service/
+    depends_on:
+      - rabbitmq
+      - elasticsearch
+  importer:
+      build:
+        context: elastic_setup
+      links:
+        - elasticsearch
+      depends_on:
+        - elasticsearch
