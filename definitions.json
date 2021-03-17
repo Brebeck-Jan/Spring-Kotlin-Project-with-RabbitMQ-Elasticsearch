@@ -2,14 +2,12 @@
   "rabbit_version": "3.7.6",
   "users": [
     {
-      "name": "guest",
-      "password_hash": "MQdLugKr3mH+/F80LFlcmSCmW7PzRIs2mhkw+K84COXmhIot",
-      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "name": "producer",
+      "password":"password",
       "tags": "administrator"
     }, {
-      "name": "guest2",
-      "password_hash": "MQdLugKr3mH+/F80LFlcmSCmW7PzRIs2mhkw+K84COXmhIot",
-      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "name": "consumer",
+      "password":"password",
       "tags": "administrator"
     }
   ],
@@ -20,7 +18,14 @@
   ],
   "permissions": [
     {
-      "user": "guest",
+      "user": "producer",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    {
+      "user": "consumer",
       "vhost": "/",
       "configure": ".*",
       "write": ".*",

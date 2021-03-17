@@ -11,5 +11,5 @@ class Polygon {
     private val id: String? = null
 
     @Field(type = FieldType.Text)
-    private val name: String? = null
+    val name: String? = null
 }

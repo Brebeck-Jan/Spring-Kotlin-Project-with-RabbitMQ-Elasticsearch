@@ -2,4 +2,27 @@
 ./data/MarketingRegions.geojson: Marketing Region
 ./data/MarketingRegions.geojson: Belize-Süd
 ./data/MarketingRegions.geojson: Papua-Neuguinea
-8914
+./data/CitysV2.geojson: Battlement Mesa
+./data/CitysV2.geojson: &Re
+./data/CitysV2.geojson: Chiu-Wu-Kung
+./data/CitysV2.geojson: Da Nang
+./data/CitysV2.geojson: Estacion Mata Ortiz
+./data/CitysV2.geojson: Ho-Chih-Hsien
+./data/CitysV2.geojson: Onokhoy
+./data/CitysV2.geojson: Guamuchil
+./data/CitysV2.geojson: Hoi An
+./data/CitysV2.geojson: Lao Giao
+./data/CitysV2.geojson: Bloomfield
+./data/CitysV2.geojson: Farmington
+./data/CitysV2.geojson: Delta
+./data/CitysV2.geojson: Zhong Xian
+./data/CitysV2.geojson: empty
+./data/CitysV2.geojson: Hermagor-Pressegger See
+./data/CitysV2.geojson: Sand
+./data/CitysV2.geojson: Sosua
+./data/CitysV2.geojson: Sand
+./data/CitysV2.geojson: empty
+./data/CitysV2.geojson: Horumersiel-Schillig
+./data/CitysV2.geojson: Kyle
+./data/CitysV2.geojson: Greybull
+13034327

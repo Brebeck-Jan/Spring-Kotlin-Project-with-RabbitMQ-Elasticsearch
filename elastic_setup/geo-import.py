@@ -2,8 +2,9 @@ import time, json
 from elasticsearch import Elasticsearch, helpers
 from datetime import datetime
 
+print("start import")
 es = Elasticsearch(hosts=["localhost"])
-
+print("connected to ES")
 #Mapping to put in for this index
 mapping ={
   "mappings": {
@@ -20,19 +21,20 @@ connected = False
 while not connected:
   try:
     # delete existing entries and index ignore 400 asnd 404
-    es.delete_by_query(index="test-index",ignore=[400, 404],wait_for_completion=True, body={'size' : 10000,"query": {"match_all": {}}})
+    es.delete_by_query(index="geo-index",ignore=[400, 404],wait_for_completion=True, body={'size' : 10000,"query": {"match_all": {}}})
     es.indices.delete(index='geo-index', ignore=[400, 404])
     # ignore 400 cause by IndexAlreadyExistsException when creating an index
     es.indices.create(index='geo-index', body=mapping, ignore=400)
+    connected=True
   except Exception as e:
+    print("connection not ready")
     print(e)
     time.sleep(10)
-  connected=True
 
 
 # files should be in data folder
-files = ["/MarketingRegions.geojson"
-#"/CitysV2.geojson", "/FederalStates.geojson","/Regions.geojson","/countries.geojson"
+files = ["/MarketingRegions.geojson","/CitysV2.geojson"
+#, "/FederalStates.geojson","/Regions.geojson","/countries.geojson"
 ]
 counter = 0
 fail_counter=0
