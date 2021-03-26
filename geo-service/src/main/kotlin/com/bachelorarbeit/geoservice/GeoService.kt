@@ -9,4 +9,3 @@ class GeoServiceApplication
 	fun main(args: Array<String>) {
 		runApplication<GeoServiceApplication>(*args)
 	}
-

@@ -32,7 +32,7 @@ class RabbitProduceController(val rabbitTemplate: RabbitTemplate) {
         println(test)
         println(test.hotels.get(0))
         test.hotels.onEach {
-            var response = rabbitTemplate.convertAndSend("hello", gson.toJson(it))
+            var response = rabbitTemplate.convertAndSend("Hotel", gson.toJson(it))
             println(gson.toJson(it))
             println(response)
         }

@@ -43,7 +43,14 @@
   "policies": [],
   "queues": [
     {
-      "name": "hello",
+      "name": "Hotel",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "GeoTags",
       "vhost": "/",
       "durable": true,
       "auto_delete": false,
