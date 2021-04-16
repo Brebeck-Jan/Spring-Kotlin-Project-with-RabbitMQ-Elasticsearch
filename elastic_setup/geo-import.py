@@ -33,9 +33,11 @@ while not connected:
 
 
 # files should be in data folder
-files = ["/MarketingRegions.geojson"
+files = [
+# "/MarketingRegions.geojson"
 #,"/CitysV2.geojson"
-#, "/FederalStates.geojson","/Regions.geojson","/countries.geojson"
+#, "/FederalStates.geojson","/Regions.geojson",
+ "/countries.geojson"
 ]
 counter = 0
 fail_counter=0

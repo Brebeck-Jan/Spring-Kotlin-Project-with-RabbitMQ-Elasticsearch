@@ -8,3 +8,5 @@
 
 4: Trigger import and push of Hotels with Post on localhost:8080/triggerImport/
 e.g. : curl -X POST localhost:8080/triggerImport/
+
+Detailed teststeps can be found in Testanleitung.pdf
